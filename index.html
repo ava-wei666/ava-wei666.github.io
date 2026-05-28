@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ava Wei — Portfolio</title>
+<meta name="description" content="Final-year Computer Science student at Aberystwyth University. I build software for real organisations — from a food-bank platform to an embedded language-learning device.">
+<meta name="author" content="Ava Wei">
+
+<meta property="og:title" content="Ava Wei — Portfolio">
+<meta property="og:description" content="Final-year CS student at Aberystwyth. I build software for real organisations.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #2A1810;
+    --accent: #E8A33D;
+    --accent-hover: #D4912D;
+    --secondary: #E85D2C;
+    --muted: #7A6657;
+    --line: rgba(42, 24, 16, 0.10);
+    --card: #FAF6F0;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  /* ============ Nav ============ */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0 0;
+    font-size: 15px;
+  }
+  .logo {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  .nav-links a {
+    opacity: 0.8;
+    transition: opacity 0.15s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    opacity: 1 !important;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent-hover); }
+
+  /* ============ Hero ============ */
+  .hero {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 80px 0 56px;
+  }
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 60px;
+    font-weight: 700;
+    box-shadow: 0 6px 32px rgba(232, 93, 44, 0.18);
+  }
+  .hero h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 42px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 720px;
+  }
+  .hero p {
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--muted);
+    max-width: 620px;
+  }
+  .hero p a {
+    color: var(--secondary);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .hero p a:hover { color: var(--accent); }
+  .hero p strong { color: var(--text); font-weight: 600; }
+
+  /* ============ Section ============ */
+  section { padding: 56px 0; }
+  .section-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin: 0 0 32px;
+    font-weight: 600;
+  }
+
+  /* ============ Work Grid ============ */
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 32px;
+  }
+  .card {
+    transition: transform 0.2s;
+    position: relative;
+  }
+  .card a.card-link {
+    display: block;
+    color: inherit;
+  }
+  .card:hover { transform: translateY(-3px); }
+  .card .illust {
+    aspect-ratio: 5/3;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-1 .illust { background: var(--secondary); }
+  .card-2 .illust { background: var(--accent); }
+  .card-3 .illust { background: var(--card); border: 1px solid var(--line); }
+  .card-4 .illust { background: #2A1810; }
+
+  .card .illust svg { width: 50%; height: 70%; }
+
+  .badge {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: #fff;
+    color: var(--text);
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .badge.badge-honor { background: var(--text); color: #fff; }
+  .badge.badge-honor::before { content: "★ "; color: var(--accent); }
+
+  .card h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 22px;
+    margin: 20px 0 4px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .card .meta {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-bottom: 10px;
+  }
+  .card .desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0 0 12px;
+  }
+  .card .stack {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: 12px 0 4px;
+  }
+  .card .stack span {
+    font-size: 11.5px;
+    background: var(--card);
+    color: var(--muted);
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-weight: 500;
+  }
+  .card .repo {
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 6px;
+  }
+  .card .repo:hover { color: var(--accent); }
+
+  /* ============ Honours strip ============ */
+  .honours {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 8px;
+  }
+  .honour-item .when {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .honour-item .what {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .honour-item .what .star { color: var(--secondary); }
+  .honour-item .detail {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ============ About ============ */
+  .about {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 56px;
+  }
+  .about p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    opacity: 0.88;
+    margin: 0 0 18px;
+    max-width: 640px;
+  }
+  .about p strong { color: var(--secondary); font-weight: 600; }
+  .about p a {
+    color: var(--secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .timeline {
+    margin-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+  .timeline-row .when {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline-row .what strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .timeline-row .what .where {
+    color: var(--muted);
+    margin-left: 4px;
+  }
+
+  /* ============ Footer ============ */
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 56px;
+    padding: 40px 0 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  footer .social { display: flex; gap: 20px; }
+  footer .social a {
+    transition: color 0.15s;
+  }
+  footer .social a:hover { color: var(--secondary); }
+
+  /* ============ Mobile ============ */
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    .nav { font-size: 14px; }
+    .nav-links { gap: 14px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 48px 0 32px;
+    }
+    .avatar { width: 96px; height: 96px; font-size: 42px; }
+    .hero h1 { font-size: 30px; }
+    .work-grid { grid-template-columns: 1fr; gap: 28px; }
+    .honours { grid-template-columns: 1fr; padding: 24px; }
+    .about { grid-template-columns: 1fr; gap: 24px; }
+    .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+    footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============ Nav ============ -->
+  <nav class="nav">
+    <a href="#" class="logo">Ava Wei</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="mailto:weizirou6688@gmail.com" class="nav-cta">Say hi →</a>
+    </div>
+  </nav>
+
+  <!-- ============ Hero ============ -->
+  <header class="hero">
+    <div class="avatar">A</div>
+    <div>
+      <h1>Hi, I'm Ava — a CS student building software for real organisations.</h1>
+      <p>Final-year <strong>BSc Computer Science</strong> at Aberystwyth University, graduating June 2026. I work across <strong>full-stack web, Android, and embedded systems</strong>. Native Mandarin, fluent English, eligible for UK graduate work from July 2026. Reach me at <a href="mailto:weizirou6688@gmail.com">weizirou6688@gmail.com</a>.</p>
+    </div>
+  </header>
+
+  <!-- ============ Work ============ -->
+  <section id="work">
+    <h2 class="section-title">— Selected Work, 2024–2026</h2>
+    <div class="work-grid">
+
+      <!-- Foodbank -->
+      <article class="card card-1">
+        <a class="card-link" href="https://github.com/ava-wei666/foodbank" target="_blank" rel="noopener">
+          <div class="illust">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Food bank package illustration">
+              <path d="M22 38 L50 24 L78 38 L78 76 L22 76 Z" fill="#FFFFFF" opacity="0.95"/>
+              <path d="M22 38 L50 52 L78 38" stroke="#E85D2C" stroke-width="2" fill="none"/>
+              <path d="M50 24 L50 52" stroke="#E85D2C" stroke-width="2"/>
+              <rect x="36" y="46" width="28" height="6" fill="#E8A33D" opacity="0.8"/>
+              <rect x="38" y="60" width="24" height="4" fill="#E85D2C" opacity="0.5"/>
+              <rect x="38" y="66" width="18" height="4" fill="#E85D2C" opacity="0.5"/>
+            </svg>
+          </div>
+          <h3>ABC Community Food Bank</h3>
+          <div class="meta">2026 · Final-year project · Full-stack web platform</div>
+          <p class="desc">An end-to-end donation and intake system for a local food bank, replacing a paper-based process. Three user roles, server-side JWT permissions, FEFO inventory with lot-level expiry, Playwright E2E tests.</p>
+          <div class="stack">
+            <span>React 18</span><span>TypeScript</span><span>FastAPI</span><span>PostgreSQL</span><span>Playwright</span>
+          </div>
+          <div class="repo">github.com/ava-wei666/foodbank →</div>
+        </a>
+      </article>
+
+      <!-- SceneLingo -->
+      <article class="card card-2">
+        <a class="card-link" href="https://github.com/ava-wei666/AberHackathon" target="_blank" rel="noopener">
+          <div class="illust">
+            <span class="badge badge-honor">BCS 2nd Place</span>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Embedded display illustration">
+              <rect x="20" y="22" width="60" height="50" rx="4" fill="#2A1810"/>
+              <rect x="24" y="26" width="52" height="38" rx="2" fill="#FFFFFF"/>
+              <rect x="30" y="32" width="22" height="3" fill="#E85D2C"/>
+              <rect x="30" y="38" width="34" height="2" fill="#7A6657"/>
+              <rect x="30" y="44" width="28" height="2" fill="#7A6657"/>
+              <circle cx="44" cy="56" r="4" fill="#E8A33D"/>
+              <circle cx="56" cy="56" r="4" fill="#E85D2C"/>
+              <rect x="44" y="74" width="12" height="6" rx="1" fill="#2A1810"/>
+            </svg>
+          </div>
+          <h3>SceneLingo</h3>
+          <div class="meta">May 2026 · BCS Aberystwyth Hackathon (3-person team)</div>
+          <p class="desc">Offline context-based English learning MVP — vanilla JS web input → FastAPI rule-based NLP → ESP32 touch display. I owned the embedded MicroPython + LVGL 9 UI and the web ↔ device integration.</p>
+          <div class="stack">
+            <span>ESP32</span><span>MicroPython</span><span>LVGL 9</span><span>FastAPI</span><span>SQLite</span>
+          </div>
+          <div class="repo">github.com/ava-wei666/AberHackathon →</div>
+        </a>
+      </article>
+
+      <!-- Feline Adoption -->
+      <article class="card card-3">
+        <a class="card-link" href="https://github.com/ava-wei666/feline-adoption-app" target="_blank" rel="noopener">
+          <div class="illust">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Cat illustration">
+              <path d="M30 36 L22 24 L36 28 L50 24 L64 28 L78 24 L70 36 Q80 56 70 78 L30 78 Q20 56 30 36 Z" fill="#E85D2C"/>
+              <circle cx="42" cy="54" r="3.5" fill="#FFFFFF"/>
+              <circle cx="58" cy="54" r="3.5" fill="#FFFFFF"/>
+              <circle cx="42" cy="54" r="1.5" fill="#2A1810"/>
+              <circle cx="58" cy="54" r="1.5" fill="#2A1810"/>
+              <path d="M48 62 L50 65 L52 62 Z" fill="#2A1810"/>
+              <path d="M46 68 Q50 72 54 68" stroke="#2A1810" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <path d="M30 70 L26 78 M70 70 L74 78" stroke="#2A1810" stroke-width="1.2" opacity="0.5"/>
+            </svg>
+          </div>
+          <h3>Feline Adoption App</h3>
+          <div class="meta">2025 · CS31620 Mobile Development · Android</div>
+          <p class="desc">Native Android app for cat-adoption listings: three Room entities (Cat / Adopter / Fosterer), Repository pattern, MVVM, Jetpack Compose UI with Material 3 dynamic colour and distance-based filtering.</p>
+          <div class="stack">
+            <span>Kotlin 2.2</span><span>Jetpack Compose</span><span>Room 2.7</span><span>Material 3</span><span>MVVM</span>
+          </div>
+          <div class="repo">github.com/ava-wei666/feline-adoption-app →</div>
+        </a>
+      </article>
+
+      <!-- Martian -->
+      <article class="card card-4">
+        <a class="card-link" href="https://github.com/ava-wei666/Martian-creatures-Genetic-Analysis" target="_blank" rel="noopener">
+          <div class="illust">
+            <span class="badge">96% test coverage</span>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="DNA helix illustration">
+              <path d="M35 18 Q50 30 65 18 Q50 30 35 42 Q50 54 65 42 Q50 54 35 66 Q50 78 65 66 Q50 78 35 90" stroke="#E8A33D" stroke-width="2.5" fill="none"/>
+              <path d="M65 18 Q50 30 35 18 Q50 30 65 42 Q50 54 35 42 Q50 54 65 66 Q50 78 35 66 Q50 78 65 90" stroke="#E85D2C" stroke-width="2.5" fill="none"/>
+              <line x1="38" y1="27" x2="62" y2="27" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+              <line x1="38" y1="42" x2="62" y2="42" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+              <line x1="38" y1="57" x2="62" y2="57" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+              <line x1="38" y1="72" x2="62" y2="72" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+            </svg>
+          </div>
+          <h3>Martian Genetic Decoder</h3>
+          <div class="meta">Jan 2026 · Python · 5-stage decoding pipeline</div>
+          <p class="desc">Reverse-engineered an alien genetic code from raw sequence data with no prior assumptions about base-pairing or codon structure. Discovered a 4-letter DNA / RNA alphabet, inferred 2-base codons, decoded an unknown gene into a 102-residue protein.</p>
+          <div class="stack">
+            <span>Python 3</span><span>Matplotlib</span><span>pytest</span><span>ruff</span><span>GitHub Actions</span>
+          </div>
+          <div class="repo">github.com/ava-wei666/Martian-creatures-Genetic-Analysis →</div>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ Honours strip ============ -->
+  <section>
+    <h2 class="section-title">— Honours & Recognition</h2>
+    <div class="honours">
+      <div class="honour-item">
+        <div class="when">May 2026</div>
+        <div class="what"><span class="star">★</span> 2nd Place · BCS Student Hackathon</div>
+        <div class="detail">British Computer Society hackathon hosted at Aberystwyth University, 3-person team — SceneLingo.</div>
+      </div>
+      <div class="honour-item">
+        <div class="when">2021</div>
+        <div class="what"><span class="star">★</span> Top 0.3% · Guangdong Computing Examination</div>
+        <div class="detail">Province-wide computer science examination, awarded during prior computing studies in China.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ About ============ -->
+  <section id="about">
+    <div class="about">
+      <h2 class="section-title">— About</h2>
+      <div>
+        <p>I'm a final-year computer science student at <strong>Aberystwyth University</strong>, graduating June 2026. I like building tools that solve <strong>concrete problems for real organisations</strong> — from a food bank's intake workflow, to a 2-day hackathon prototype that runs on an ESP32 touch screen.</p>
+        <p>I work across the stack — backend (FastAPI, SQLAlchemy, PostgreSQL), frontend (React, TypeScript), Android (Kotlin + Jetpack Compose), and embedded (MicroPython + LVGL). I care about delivery — discovery, iteration, testing, and the boring parts that make software actually ship.</p>
+        <p>Native Mandarin and fluent English. <strong>Eligible for UK Graduate Route from July 2026</strong>, and for UK Skilled Worker (New Entrant) sponsorship. Open to graduate roles in software engineering, data, and adjacent fields — particularly across UK and APAC.</p>
+
+        <div class="timeline">
+          <div class="timeline-row">
+            <span class="when">Jun 2026</span>
+            <span class="what"><strong>BSc (Hons) Computer Science</strong><span class="where">· Aberystwyth University · Graduating</span></span>
+          </div>
+          <div class="timeline-row">
+            <span class="when">2025–26</span>
+            <span class="what"><strong>Final-year project</strong><span class="where">· Full-stack platform for a local food bank</span></span>
+          </div>
+          <div class="timeline-row">
+            <span class="when">May 2026</span>
+            <span class="what"><strong>BCS Student Hackathon, 2nd Place</strong><span class="where">· Aberystwyth University</span></span>
+          </div>
+          <div class="timeline-row">
+            <span class="when">Jan–May 2022</span>
+            <span class="what"><strong>Community Operations Intern</strong><span class="where">· Shenzhen Wuling Technology</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Footer ============ -->
+  <footer>
+    <span>© 2026 Ava Wei · Built with care in Aberystwyth</span>
+    <div class="social">
+      <a href="mailto:weizirou6688@gmail.com">Email</a>
+      <a href="https://github.com/ava-wei666" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ava-wei-b43678387" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
