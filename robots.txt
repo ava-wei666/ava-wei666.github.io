@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ava-wei666.github.io/sitemap.xml

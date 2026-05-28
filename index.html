@@ -6,10 +6,48 @@
 <title>Ava Wei — Portfolio</title>
 <meta name="description" content="Final-year Computer Science student at Aberystwyth University. I build software for real organisations — from a food-bank platform to an embedded language-learning device.">
 <meta name="author" content="Ava Wei">
+<link rel="canonical" href="https://ava-wei666.github.io/">
 
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ava-wei666.github.io/">
 <meta property="og:title" content="Ava Wei — Portfolio">
 <meta property="og:description" content="Final-year CS student at Aberystwyth. I build software for real organisations.">
-<meta property="og:type" content="website">
+<meta property="og:image" content="https://ava-wei666.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ava Wei — Portfolio">
+<meta name="twitter:description" content="Final-year CS student at Aberystwyth. I build software for real organisations.">
+<meta name="twitter:image" content="https://ava-wei666.github.io/og-image.png">
+
+<!-- Structured data: Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ava Wei",
+  "url": "https://ava-wei666.github.io",
+  "email": "weizirou6688@gmail.com",
+  "image": "https://ava-wei666.github.io/og-image.png",
+  "jobTitle": "Computer Science Student",
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Aberystwyth University",
+    "url": "https://www.aber.ac.uk"
+  },
+  "knowsLanguage": ["Mandarin Chinese", "English"],
+  "sameAs": [
+    "https://github.com/ava-wei666",
+    "https://www.linkedin.com/in/ava-wei-b43678387"
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +63,7 @@
     --muted: #7A6657;
     --line: rgba(42, 24, 16, 0.10);
     --card: #FAF6F0;
+    --avail: #4F9D69;
   }
 
   * { box-sizing: border-box; }
@@ -40,6 +79,24 @@
   }
 
   a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  /* Skip link for keyboard / screen reader users */
+  .skip-link {
+    position: absolute;
+    top: -100px; left: 16px;
+    background: var(--text);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 1000;
+  }
+  .skip-link:focus { top: 16px; }
 
   .container {
     max-width: 1080px;
@@ -89,7 +146,7 @@
     grid-template-columns: 140px 1fr;
     gap: 40px;
     align-items: center;
-    padding: 80px 0 56px;
+    padding: 64px 0 56px;
   }
   .avatar {
     width: 140px;
@@ -105,6 +162,31 @@
     font-weight: 700;
     box-shadow: 0 6px 32px rgba(232, 93, 44, 0.18);
   }
+
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(79, 157, 105, 0.10);
+    color: var(--avail);
+    padding: 6px 14px 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+  }
+  .availability .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--avail);
+    box-shadow: 0 0 0 4px rgba(79, 157, 105, 0.2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(79, 157, 105, 0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(79, 157, 105, 0.05); }
+  }
+
   .hero h1 {
     font-family: "Fraunces", Georgia, serif;
     font-size: 42px;
@@ -307,6 +389,61 @@
     margin-left: 4px;
   }
 
+  /* ============ Contact CTA ============ */
+  .contact {
+    background: var(--text);
+    color: #fff;
+    border-radius: 24px;
+    padding: 56px 56px 48px;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+  }
+  .contact h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    max-width: 520px;
+  }
+  .contact p {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 480px;
+  }
+  .contact .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+  }
+  .contact .actions a {
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .contact .actions a:hover { background: var(--accent-hover); }
+  .contact .actions a.secondary {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.9);
+  }
+  .contact .actions a.secondary:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.4);
+  }
+
   /* ============ Footer ============ */
   footer {
     border-top: 1px solid var(--line);
@@ -333,7 +470,7 @@
     .hero {
       grid-template-columns: 1fr;
       gap: 24px;
-      padding: 48px 0 32px;
+      padding: 40px 0 32px;
     }
     .avatar { width: 96px; height: 96px; font-size: 42px; }
     .hero h1 { font-size: 30px; }
@@ -341,16 +478,48 @@
     .honours { grid-template-columns: 1fr; padding: 24px; }
     .about { grid-template-columns: 1fr; gap: 24px; }
     .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+    .contact {
+      grid-template-columns: 1fr;
+      padding: 36px 28px;
+      gap: 24px;
+    }
+    .contact h2 { font-size: 28px; }
+    .contact .actions { flex-direction: row; align-items: stretch; flex-wrap: wrap; }
+    .contact .actions a { flex: 1; text-align: center; padding: 12px 18px; }
     footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+  }
+
+  /* ============ Print ============ */
+  @media print {
+    body { font-size: 11pt; color: #000; background: #fff; }
+    .nav-cta, .contact .actions, .skip-link { display: none; }
+    .nav { padding: 0; }
+    .container { padding: 0 12mm; max-width: none; }
+    .hero { padding: 16pt 0; }
+    .hero h1 { font-size: 22pt; }
+    .avatar { box-shadow: none; }
+    section { padding: 12pt 0; page-break-inside: avoid; }
+    .card { page-break-inside: avoid; }
+    .work-grid { gap: 12pt; }
+    .card .illust { display: none; }
+    .badge { display: none; }
+    .contact { background: #f5f5f5; color: #000; padding: 16pt; page-break-inside: avoid; }
+    .contact h2 { color: #000; font-size: 16pt; }
+    .contact p { color: #444; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; word-break: break-all; }
+    a[href^="mailto"]::after { content: ""; }
+    .availability { display: none; }
   }
 </style>
 </head>
 <body>
 
+<a href="#work" class="skip-link">Skip to content</a>
+
 <div class="container">
 
   <!-- ============ Nav ============ -->
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary">
     <a href="#" class="logo">Ava Wei</a>
     <div class="nav-links">
       <a href="#work">Work</a>
@@ -361,10 +530,11 @@
 
   <!-- ============ Hero ============ -->
   <header class="hero">
-    <div class="avatar">A</div>
+    <div class="avatar" aria-hidden="true">A</div>
     <div>
+      <div class="availability"><span class="dot" aria-hidden="true"></span> Available for UK graduate roles · July 2026</div>
       <h1>Hi, I'm Ava — a CS student building software for real organisations.</h1>
-      <p>Final-year <strong>BSc Computer Science</strong> at Aberystwyth University, graduating June 2026. I work across <strong>full-stack web, Android, and embedded systems</strong>. Native Mandarin, fluent English, eligible for UK graduate work from July 2026. Reach me at <a href="mailto:weizirou6688@gmail.com">weizirou6688@gmail.com</a>.</p>
+      <p>Final-year <strong>BSc Computer Science</strong> at Aberystwyth University, graduating June 2026. I work across <strong>full-stack web, Android, and embedded systems</strong>. Native Mandarin, fluent English. Reach me at <a href="mailto:weizirou6688@gmail.com">weizirou6688@gmail.com</a>.</p>
     </div>
   </header>
 
@@ -375,9 +545,9 @@
 
       <!-- Foodbank -->
       <article class="card card-1">
-        <a class="card-link" href="https://github.com/ava-wei666/foodbank" target="_blank" rel="noopener">
+        <a class="card-link" href="https://github.com/ava-wei666/foodbank" target="_blank" rel="noopener" aria-label="ABC Community Food Bank project on GitHub">
           <div class="illust">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Food bank package illustration">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M22 38 L50 24 L78 38 L78 76 L22 76 Z" fill="#FFFFFF" opacity="0.95"/>
               <path d="M22 38 L50 52 L78 38" stroke="#E85D2C" stroke-width="2" fill="none"/>
               <path d="M50 24 L50 52" stroke="#E85D2C" stroke-width="2"/>
@@ -398,10 +568,10 @@
 
       <!-- SceneLingo -->
       <article class="card card-2">
-        <a class="card-link" href="https://github.com/ava-wei666/AberHackathon" target="_blank" rel="noopener">
+        <a class="card-link" href="https://github.com/ava-wei666/AberHackathon" target="_blank" rel="noopener" aria-label="SceneLingo hackathon project on GitHub">
           <div class="illust">
             <span class="badge badge-honor">BCS 2nd Place</span>
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Embedded display illustration">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <rect x="20" y="22" width="60" height="50" rx="4" fill="#2A1810"/>
               <rect x="24" y="26" width="52" height="38" rx="2" fill="#FFFFFF"/>
               <rect x="30" y="32" width="22" height="3" fill="#E85D2C"/>
@@ -424,9 +594,9 @@
 
       <!-- Feline Adoption -->
       <article class="card card-3">
-        <a class="card-link" href="https://github.com/ava-wei666/feline-adoption-app" target="_blank" rel="noopener">
+        <a class="card-link" href="https://github.com/ava-wei666/feline-adoption-app" target="_blank" rel="noopener" aria-label="Feline Adoption Android app on GitHub">
           <div class="illust">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Cat illustration">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M30 36 L22 24 L36 28 L50 24 L64 28 L78 24 L70 36 Q80 56 70 78 L30 78 Q20 56 30 36 Z" fill="#E85D2C"/>
               <circle cx="42" cy="54" r="3.5" fill="#FFFFFF"/>
               <circle cx="58" cy="54" r="3.5" fill="#FFFFFF"/>
@@ -449,10 +619,10 @@
 
       <!-- Martian -->
       <article class="card card-4">
-        <a class="card-link" href="https://github.com/ava-wei666/Martian-creatures-Genetic-Analysis" target="_blank" rel="noopener">
+        <a class="card-link" href="https://github.com/ava-wei666/Martian-creatures-Genetic-Analysis" target="_blank" rel="noopener" aria-label="Martian Genetic Decoder on GitHub">
           <div class="illust">
             <span class="badge">96% test coverage</span>
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="DNA helix illustration">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M35 18 Q50 30 65 18 Q50 30 35 42 Q50 54 65 42 Q50 54 35 66 Q50 78 65 66 Q50 78 35 90" stroke="#E8A33D" stroke-width="2.5" fill="none"/>
               <path d="M65 18 Q50 30 35 18 Q50 30 65 42 Q50 54 35 42 Q50 54 65 66 Q50 78 35 66 Q50 78 65 90" stroke="#E85D2C" stroke-width="2.5" fill="none"/>
               <line x1="38" y1="27" x2="62" y2="27" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
@@ -498,7 +668,7 @@
       <div>
         <p>I'm a final-year computer science student at <strong>Aberystwyth University</strong>, graduating June 2026. I like building tools that solve <strong>concrete problems for real organisations</strong> — from a food bank's intake workflow, to a 2-day hackathon prototype that runs on an ESP32 touch screen.</p>
         <p>I work across the stack — backend (FastAPI, SQLAlchemy, PostgreSQL), frontend (React, TypeScript), Android (Kotlin + Jetpack Compose), and embedded (MicroPython + LVGL). I care about delivery — discovery, iteration, testing, and the boring parts that make software actually ship.</p>
-        <p>Native Mandarin and fluent English. <strong>Eligible for UK Graduate Route from July 2026</strong>, and for UK Skilled Worker (New Entrant) sponsorship. Open to graduate roles in software engineering, data, and adjacent fields — particularly across UK and APAC.</p>
+        <p>Native Mandarin and fluent English. <strong>Eligible for the UK Graduate Route from July 2026</strong> and UK Skilled Worker (New Entrant) sponsorship. Open to graduate roles in software engineering, data, and adjacent fields — particularly across UK and APAC.</p>
 
         <div class="timeline">
           <div class="timeline-row">
@@ -518,6 +688,20 @@
             <span class="what"><strong>Community Operations Intern</strong><span class="where">· Shenzhen Wuling Technology</span></span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Contact CTA ============ -->
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <h2>Let's talk about graduate roles.</h2>
+        <p>I'm open to UK and APAC opportunities from July 2026 — software engineering, data, or any role where bilingual delivery is an asset. CV available on request.</p>
+      </div>
+      <div class="actions">
+        <a href="mailto:weizirou6688@gmail.com">Email Ava →</a>
+        <a class="secondary" href="https://www.linkedin.com/in/ava-wei-b43678387" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </section>
