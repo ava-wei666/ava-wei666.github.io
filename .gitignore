@@ -3,3 +3,7 @@ Thumbs.db
 *.log
 .vscode/
 node_modules/
+
+# Local build artifacts (regenerated; not part of the deployed site)
+Ava-Wei-Portfolio.pdf
+_preview-desktop.png
